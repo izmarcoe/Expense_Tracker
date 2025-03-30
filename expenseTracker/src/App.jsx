@@ -1,36 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import './index.css'
+import { useState } from "react";
+import { Header } from "./Components/header.jsx";
+import "./App.css";
+import "./index.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [balance, setBalance] = useState();
+
+  const handleBalanceChange = (e) => {
+    setBalance(e.target.value);
+  };
 
   return (
-    <>
-      <div className="flex gap-4 items-center justify-center">
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className=" w-[400px] h-[500px] mx-auto mt-10 border-red-500 border-2 rouunded-lg shadow-lg">
+      <div className="text-center">
+        <Header />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="text-left mt-5">
+        <h1 className="text-xl font-bold pl-8">My Balance</h1>
+        <div className="flex items-center pl-8 pt-2">
+          <span className="text-lg font-bold">$</span>
+          <input
+            type="number"
+            value={balance}
+            onChange={handleBalanceChange}
+            className="text-lg font-bold bg-transparent border-none outline-none w-32"
+          />
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
